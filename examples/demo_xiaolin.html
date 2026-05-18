@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>人生说明书 — 小林</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500&display=swap');
+
+  :root {
+    --bg: #FAF6F1;
+    --text: #2C2C2C;
+    --text-light: #8A8278;
+    --accent: #C4956A;
+    --accent-dark: #A67B5B;
+    --chapter: #3D3D3D;
+    --card-bg: #FFFFFF;
+    --border: #E8E0D6;
+    --spectrum-bg: #EDE7DF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans SC', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 60px 40px;
+  }
+
+  /* ── 封面 ── */
+  .cover {
+    text-align: center;
+    padding: 120px 0 80px;
+    border-bottom: 1px solid var(--border);
+  }
+  .cover-decoration {
+    font-size: 24px;
+    color: var(--accent);
+    letter-spacing: 20px;
+    margin-bottom: 60px;
+  }
+  .cover h1 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 42px;
+    font-weight: 700;
+    letter-spacing: 12px;
+    color: var(--text);
+    margin-bottom: 16px;
+  }
+  .cover .subtitle {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 13px;
+    letter-spacing: 8px;
+    color: var(--text-light);
+    text-transform: uppercase;
+    margin-bottom: 48px;
+  }
+  .cover .divider {
+    width: 40px;
+    height: 1px;
+    background: var(--accent);
+    margin: 0 auto 48px;
+  }
+  .cover .owner {
+    font-size: 15px;
+    color: var(--text-light);
+    margin-bottom: 12px;
+  }
+  .cover .owner .name {
+    color: var(--accent-dark);
+    font-weight: 500;
+  }
+  .cover .date {
+    font-size: 13px;
+    color: var(--text-light);
+    opacity: 0.7;
+    margin-bottom: 8px;
+  }
+  .cover .edition {
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 2px;
+    margin-top: 32px;
+  }
+
+  /* ── 目录 ── */
+  .toc {
+    padding: 60px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .toc h2 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 14px;
+    letter-spacing: 4px;
+    color: var(--text-light);
+    margin-bottom: 32px;
+  }
+  .toc ol {
+    list-style: none;
+    counter-reset: toc;
+  }
+  .toc li {
+    counter-increment: toc;
+    padding: 12px 0;
+    border-bottom: 1px dotted var(--border);
+    font-size: 15px;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+  }
+  .toc li::before {
+    content: "0" counter(toc);
+    font-family: 'Noto Serif SC', serif;
+    color: var(--accent);
+    margin-right: 16px;
+    font-size: 14px;
+  }
+
+  /* ── 章节 ── */
+  .chapter {
+    padding: 60px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .chapter h2 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--chapter);
+    margin-bottom: 36px;
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+  }
+  .chapter-num {
+    font-size: 13px;
+    color: var(--accent);
+    letter-spacing: 2px;
+    font-weight: 400;
+  }
+  .chapter-intro {
+    font-size: 14px;
+    color: var(--text-light);
+    margin-bottom: 32px;
+    font-style: italic;
+  }
+
+  /* ── 档案卡 ── */
+  .profile-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 32px;
+    margin-bottom: 36px;
+  }
+  .profile-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .profile-item:last-child { border-bottom: none; }
+  .profile-item .label {
+    font-size: 13px;
+    color: var(--text-light);
+    flex-shrink: 0;
+    width: 100px;
+  }
+  .profile-item .value {
+    font-size: 15px;
+    color: var(--text);
+    text-align: right;
+    font-weight: 500;
+  }
+
+  /* ── 描述文字 ── */
+  .description {
+    font-size: 15px;
+    line-height: 2;
+    color: var(--text);
+  }
+  .description p {
+    margin-bottom: 20px;
+    text-indent: 2em;
+  }
+
+  /* ── 光谱 ── */
+  .spectrum { margin-top: 8px; }
+  .spectrum-item { margin-bottom: 36px; }
+  .spectrum-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: var(--text-light);
+    margin-bottom: 10px;
+  }
+  .spectrum-bar {
+    position: relative;
+    height: 6px;
+    background: var(--spectrum-bg);
+    border-radius: 3px;
+    overflow: visible;
+  }
+  .spectrum-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+    border-radius: 3px;
+    transition: width 1s ease;
+  }
+  .spectrum-dot {
+    position: absolute;
+    top: 50%;
+    width: 16px;
+    height: 16px;
+    background: var(--card-bg);
+    border: 3px solid var(--accent-dark);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: left 1s ease;
+  }
+  .spectrum-note {
+    font-size: 14px;
+    color: var(--text-light);
+    margin-top: 10px;
+    line-height: 1.7;
+  }
+
+  /* ── 技能卡 ── */
+  .skills {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .skill-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px 24px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .skill-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  }
+  .skill-icon {
+    font-size: 20px;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .skill-card h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--chapter);
+  }
+  .skill-card p {
+    font-size: 13px;
+    color: var(--text-light);
+    line-height: 1.8;
+  }
+
+  /* ── 建议 ── */
+  .tips { display: flex; flex-direction: column; gap: 16px; }
+  .tip-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px 28px;
+  }
+  .tip-card h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--chapter);
+  }
+  .tip-card p {
+    font-size: 14px;
+    color: var(--text-light);
+    line-height: 1.8;
+  }
+
+  /* ── 注意事项 ── */
+  .warnings { display: flex; flex-direction: column; gap: 20px; }
+  .warning-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .warning-icon {
+    font-size: 16px;
+    color: var(--accent);
+    flex-shrink: 0;
+    margin-top: 3px;
+  }
+  .warning-item p {
+    font-size: 14px;
+    color: var(--text-light);
+    line-height: 1.8;
+  }
+
+  /* ── 保修 ── */
+  .warranty-item {
+    font-size: 14px;
+    color: var(--text-light);
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+  .warranty-item strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  /* ── 尾页 ── */
+  .ending {
+    text-align: center;
+    padding: 100px 0 60px;
+  }
+  .ending-decoration {
+    font-size: 20px;
+    color: var(--accent);
+    letter-spacing: 16px;
+    margin-bottom: 48px;
+  }
+  .ending-text {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 18px;
+    line-height: 2.2;
+    color: var(--chapter);
+    margin-bottom: 48px;
+  }
+  .ending-line {
+    width: 40px;
+    height: 1px;
+    background: var(--accent);
+    margin: 0 auto 32px;
+  }
+  .ending-note {
+    font-size: 12px;
+    color: var(--text-light);
+    line-height: 2;
+    letter-spacing: 1px;
+  }
+
+  @media (max-width: 600px) {
+    .page { padding: 40px 24px; }
+    .cover h1 { font-size: 32px; letter-spacing: 8px; }
+    .skills { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ═══ 封面 ═══ -->
+  <div class="cover">
+    <div class="cover-decoration">✦ ✦ ✦</div>
+    <h1>人生说明书</h1>
+    <p class="subtitle">LIFE MANUAL</p>
+    <div class="divider"></div>
+    <p class="owner">为 <span class="name">小林</span> 生成</p>
+    <p class="date">生成日期：2026年5月18日</p>
+    <p class="edition">全球限量一册 · 不可复制</p>
+  </div>
+
+  <!-- ═══ 目录 ═══ -->
+  <div class="toc">
+    <h2>目 录</h2>
+    <ol>
+      <li>关于这个人</li>
+      <li>内在光谱</li>
+      <li>隐藏技能</li>
+      <li>使用建议</li>
+      <li>注意事项</li>
+      <li>保修条款</li>
+    </ol>
+  </div>
+
+  <!-- ═══ 第一章 ═══ -->
+  <div class="chapter">
+    <h2><span class="chapter-num">01</span> 关于这个人</h2>
+
+    <div class="profile-card">
+      <div class="profile-item">
+        <span class="label">气质类型</span>
+        <span class="value">凌晨三点型</span>
+      </div>
+      <div class="profile-item">
+        <span class="label">核心驱动力</span>
+        <span class="value">在混乱中寻找秩序</span>
+      </div>
+      <div class="profile-item">
+        <span class="label">隐藏的矛盾</span>
+        <span class="value">害怕孤独，却需要大量独处</span>
+      </div>
+      <div class="profile-item">
+        <span class="label">能量来源</span>
+        <span class="value">完成一件小事的瞬间</span>
+      </div>
+    </div>
+
+    <div class="description">
+      <p>小林是一个会在凌晨三点突然开始整理房间的人。不是因为强迫症，而是因为有些想法只有在所有人都睡着的时候才能想清楚。白天太吵了——不是声音的吵，是信息的吵。</p>
+      <p>这个人看起来很随和，但内心有非常固执的底线。你可以在大多数事情上迁就别人，但有几件事，你绝对不会让步。那些事可能很小——比如"我说了不想去就是不想去"，但对你来说，那是关于"我是谁"的问题。</p>
+      <p>你有一个别人不太知道的习惯：会在心里给遇到的人打分。不是评判好坏，而是记录"这个人说了什么让我印象深刻的话"。那些话你可能永远不会告诉当事人，但它们一直在你心里。</p>
+    </div>
+  </div>
+
+  <!-- ═══ 第二章 ═══ -->
+  <div class="chapter">
+    <h2><span class="chapter-num">02</span> 内在光谱</h2>
+    <p class="chapter-intro">每个人都不是单维度的。以下是这个人的内在光谱分析。</p>
+
+    <div class="spectrum">
+      <div class="spectrum-item">
+        <div class="spectrum-label">
+          <span>理性 ←</span>
+          <span>→ 感性</span>
+        </div>
+        <div class="spectrum-bar">
+          <div class="spectrum-fill" style="width: 68%"></div>
+          <div class="spectrum-dot" style="left: 68%"></div>
+        </div>
+        <p class="spectrum-note">你做决定时更相信直觉，但事后会理性复盘。有时候你会怀疑自己的直觉，但事实证明，你的直觉大部分时候是对的。</p>
+      </div>
+
+      <div class="spectrum-item">
+        <div class="spectrum-label">
+          <span>独处 ←</span>
+          <span>→ 社交</span>
+        </div>
+        <div class="spectrum-bar">
+          <div class="spectrum-fill" style="width: 35%"></div>
+          <div class="spectrum-dot" style="left: 35%"></div>
+        </div>
+        <p class="spectrum-note">你需要独处来充电，但并不排斥社交。只是社交对你来说更像是一场演出，结束后你需要很长时间来恢复。</p>
+      </div>
+
+      <div class="spectrum-item">
+        <div class="spectrum-label">
+          <span>计划 ←</span>
+          <span>→ 随性</span>
+        </div>
+        <div class="spectrum-bar">
+          <div class="spectrum-fill" style="width: 55%"></div>
+          <div class="spectrum-dot" style="left: 55%"></div>
+        </div>
+        <p class="spectrum-note">你喜欢有计划，但不会因为计划被打乱而崩溃。事实上，你最好的几个决定都是计划之外的。</p>
+      </div>
+
+      <div class="spectrum-item">
+        <div class="spectrum-label">
+          <span>理想主义 ←</span>
+          <span>→ 现实主义</span>
+        </div>
+        <div class="spectrum-bar">
+          <div class="spectrum-fill" style="width: 62%"></div>
+          <div class="spectrum-dot" style="left: 62%"></div>
+        </div>
+        <p class="spectrum-note">你心里住着一个理想主义者，但现实教会了你妥协的艺术。你不觉得妥协是失败，你觉得能妥协说明你足够灵活。</p>
+      </div>
+
+      <div class="spectrum-item">
+        <div class="spectrum-label">
+          <span>敏感 ←</span>
+          <span>→ 钝感</span>
+        </div>
+        <div class="spectrum-bar">
+          <div class="spectrum-fill" style="width: 78%"></div>
+          <div class="spectrum-dot" style="left: 78%"></div>
+        </div>
+        <p class="spectrum-note">你比大多数人想象的要敏感得多。你能感知到房间里情绪的微妙变化。但你也学会了假装没感觉到——这是你保护自己的方式。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 第三章 ═══ -->
+  <div class="chapter">
+    <h2><span class="chapter-num">03</span> 隐藏技能</h2>
+    <p class="chapter-intro">这个人可能自己都没意识到的能力。</p>
+
+    <div class="skills">
+      <div class="skill-card">
+        <div class="skill-icon">◈</div>
+        <h3>沉默的领导者</h3>
+        <p>你不需要说话就能影响房间里的氛围。当你在场时，人们会不自觉地安静一些、认真一些。你自己可能完全没意识到这一点。</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">◈</div>
+        <h3>时间折叠术</h3>
+        <p>你能在有限的时间里做很多事，但别人以为你很闲。这不是因为你效率高，而是因为你把别人用来犹豫的时间直接用来行动了。</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">◈</div>
+        <h3>情绪雷达</h3>
+        <p>你能感知到别人没说出口的情绪。朋友还没开口你就知道TA今天不太好。这个能力有时候是天赋，有时候是负担。</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">◈</div>
+        <h3>温柔的拒绝术</h3>
+        <p>你能说不，但不会让对方难受。你天生就知道怎么在保护自己边界的同时，不让对方觉得自己被拒绝了。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 第四章 ═══ -->
+  <div class="chapter">
+    <h2><span class="chapter-num">04</span> 使用建议</h2>
+    <p class="chapter-intro">关于如何与这个人相处的建议。</p>
+
+    <div class="tips">
+      <div class="tip-card">
+        <h3>✦ 最佳相处方式</h3>
+        <p>不要试图填满所有的沉默。有些安静是舒适的，不需要打破。如果你和这个人待在一起，什么都不说也不觉得尴尬，那说明你们的关系很好。</p>
+      </div>
+      <div class="tip-card">
+        <h3>✦ 如何获得信任</h3>
+        <p>说到做到。这个人记性很好，尤其是关于承诺的部分。你不需要做很多，只要每次都做到你说过的，信任就会慢慢建立。</p>
+      </div>
+      <div class="tip-card">
+        <h3>✦ 不要做的事</h3>
+        <p>不要在TA还没准备好时催促做决定。给时间，比给建议更重要。也不要在公众场合让这个人突然成为焦点——除非TA自己选择站出来。</p>
+      </div>
+      <div class="tip-card">
+        <h3>✦ 什么时候TA最开心</h3>
+        <p>当一件事情从无到有被完成的时候。不一定是大事，可能只是修好了一个坏掉的东西、做了一顿饭、或者终于想通了一个困扰很久的问题。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 第五章 ═══ -->
+  <div class="chapter">
+    <h2><span class="chapter-num">05</span> 注意事项</h2>
+
+    <div class="warnings">
+      <div class="warning-item">
+        <span class="warning-icon">⚠</span>
+        <p>这个人表面看起来没事，但不代表真的没事。如果TA突然变得特别安静——不是平时那种安静，而是一种"关机"式的安静——那可能需要被关心了。但不要直接问"你怎么了"，可以试试"我在"。</p>
+      </div>
+      <div class="warning-item">
+        <span class="warning-icon">⚠</span>
+        <p>不要低估这个人的固执。平时看起来很好说话，但一旦触及底线，TA的拒绝是绝对的、不可商量的。这不是任性，这是TA保护自己核心的方式。</p>
+      </div>
+      <div class="warning-item">
+        <span class="warning-icon">⚠</span>
+        <p>这个人有时候会突然消失一段时间。不是不告而别，而是需要一个人待着消化一些东西。这不是因为不在乎你，恰恰相反——TA不想把负能量带给你。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 第六章 ═══ -->
+  <div class="chapter">
+    <h2><span class="chapter-num">06</span> 保修条款</h2>
+
+    <div class="warranty">
+      <p class="warranty-item">
+        <strong>保修期：</strong>终身。从出生到离开，这个人的灵魂保修期不设上限。
+      </p>
+      <p class="warranty-item">
+        <strong>适用范围：</strong>适用于所有人生阶段，包括但不限于迷茫期、燃烧期、躺平期、突然想通期。
+      </p>
+      <p class="warranty-item">
+        <strong>免责声明：</strong>本说明书无法预测未来，但可以确认——这个人值得被认真对待。
+      </p>
+      <p class="warranty-item">
+        <strong>特别说明：</strong>如有任何问题，请直接联系当事人本人。建议从"最近怎么样"开始，而不是"你最近怎么不怎么说话了"。
+      </p>
+    </div>
+  </div>
+
+  <!-- ═══ 尾页 ═══ -->
+  <div class="ending">
+    <div class="ending-decoration">✦</div>
+    <p class="ending-text">
+      "每个人都是一本还没被好好读过的书。<br>
+      这本说明书，只是一个开始。"
+    </p>
+    <div class="ending-line"></div>
+    <p class="ending-note">
+      由 LifeManual 生成 · 2026年5月18日<br>
+      全球限量一册 · 仅此一份
+    </p>
+  </div>
+
+</div>
+</body>
+</html>
