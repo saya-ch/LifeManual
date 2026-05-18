@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>人生说明书 — 小鱼</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500&display=swap');
+
+  :root {
+    --bg: #FAF5F0;
+    --text: #2D2A28;
+    --text-light: #7A7470;
+    --accent: #E8A0BF;
+    --accent-dark: #D4849F;
+    --accent-light: #F5D5E5;
+    --mint: #7EC8B8;
+    --mint-light: #D4F0EA;
+    --chapter: #3D3835;
+    --card-bg: #FFFFFF;
+    --border: #EDE5DD;
+    --spectrum-bg: #EDE5DD;
+    --energy-charge: #7EC8B8;
+    --energy-drain: #E8A0BF;
+    --energy-save: #7EC8B8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans SC', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 60px 40px;
+  }
+
+  /* 封面 */
+  .cover {
+    text-align: center;
+    padding: 100px 0 80px;
+    border-bottom: 1px solid var(--border);
+  }
+  .cover-decoration {
+    font-size: 24px;
+    color: var(--accent);
+    letter-spacing: 16px;
+    margin-bottom: 50px;
+    opacity: 0.7;
+  }
+  .cover h1 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 40px;
+    font-weight: 700;
+    letter-spacing: 10px;
+    color: var(--text);
+    margin-bottom: 14px;
+  }
+  .cover .subtitle {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 12px;
+    letter-spacing: 6px;
+    color: var(--text-light);
+    text-transform: uppercase;
+    margin-bottom: 44px;
+  }
+  .cover .divider {
+    width: 36px;
+    height: 1px;
+    background: var(--accent);
+    margin: 0 auto 44px;
+  }
+  .cover .owner {
+    font-size: 15px;
+    color: var(--text-light);
+    margin-bottom: 10px;
+  }
+  .cover .owner .name {
+    color: var(--accent-dark);
+    font-weight: 500;
+  }
+  .cover .date {
+    font-size: 13px;
+    color: var(--text-light);
+    opacity: 0.7;
+    margin-bottom: 8px;
+  }
+  .cover .edition {
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 2px;
+    margin-top: 28px;
+  }
+  .cover .tagline {
+    font-size: 13px;
+    color: var(--text-light);
+    margin-top: 20px;
+    font-style: italic;
+    line-height: 1.8;
+  }
+
+  /* 目录 */
+  .toc {
+    padding: 50px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .toc h2 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 14px;
+    letter-spacing: 4px;
+    color: var(--text-light);
+    margin-bottom: 28px;
+  }
+  .toc ol {
+    list-style: none;
+    counter-reset: toc;
+  }
+  .toc li {
+    counter-increment: toc;
+    padding: 10px 0;
+    border-bottom: 1px dotted var(--border);
+    font-size: 14px;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+  }
+  .toc li::before {
+    content: "0" counter(toc);
+    font-family: 'Noto Serif SC', serif;
+    color: var(--accent);
+    margin-right: 14px;
+    font-size: 13px;
+  }
+  .toc li .new-tag {
+    font-size: 10px;
+    background: var(--accent-light);
+    color: var(--accent-dark);
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-left: 8px;
+    font-weight: 500;
+  }
+  .toc li .upgrade-tag {
+    font-size: 10px;
+    background: var(--mint-light);
+    color: var(--mint);
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-left: 8px;
+    font-weight: 500;
+  }
+
+  /* 章节 */
+  .chapter {
+    padding: 50px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .chapter h2 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--chapter);
+    margin-bottom: 32px;
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+  }
+  .chapter-num {
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 2px;
+    font-weight: 400;
+  }
+  .chapter-intro {
+    font-size: 13px;
+    color: var(--text-light);
+    margin-bottom: 28px;
+    font-style: italic;
+  }
+
+  /* 档案卡 */
+  .profile-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.03);
+  }
+  .profile-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .profile-item:last-child { border-bottom: none; }
+  .profile-item .label {
+    font-size: 12px;
+    color: var(--text-light);
+    flex-shrink: 0;
+    width: 90px;
+  }
+  .profile-item .value {
+    font-size: 14px;
+    color: var(--text);
+    text-align: right;
+    font-weight: 500;
+    max-width: 380px;
+    line-height: 1.6;
+  }
+
+  /* 描述文字 */
+  .description {
+    font-size: 14px;
+    line-height: 2;
+    color: var(--text);
+  }
+  .description p {
+    margin-bottom: 18px;
+    text-indent: 2em;
+  }
+
+  /* 光谱 */
+  .spectrum { margin-top: 8px; }
+  .spectrum-item { margin-bottom: 32px; }
+  .spectrum-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--text-light);
+    margin-bottom: 8px;
+  }
+  .spectrum-bar {
+    position: relative;
+    height: 5px;
+    background: var(--spectrum-bg);
+    border-radius: 3px;
+    overflow: visible;
+  }
+  .spectrum-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--mint), var(--accent));
+    border-radius: 3px;
+  }
+  .spectrum-dot {
+    position: absolute;
+    top: 50%;
+    width: 14px;
+    height: 14px;
+    background: var(--card-bg);
+    border: 3px solid var(--accent);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .spectrum-note {
+    font-size: 13px;
+    color: var(--text-light);
+    margin-top: 8px;
+    line-height: 1.6;
+  }
+
+  /* 能量说明书 */
+  .energy-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .energy-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.03);
+  }
+  .energy-card h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .energy-card.charge { border-left: 3px solid var(--energy-charge); }
+  .energy-card.charge h3 { color: var(--energy-charge); }
+  .energy-card.drain { border-left: 3px solid var(--energy-drain); }
+  .energy-card.drain h3 { color: var(--energy-drain); }
+  .energy-card.save { border-left: 3px solid var(--energy-save); }
+  .energy-card.save h3 { color: var(--energy-save); }
+  .energy-card ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  .energy-card li {
+    font-size: 13px;
+    color: var(--text-light);
+    padding: 6px 0;
+    padding-left: 16px;
+    position: relative;
+  }
+  .energy-card.charge li::before {
+    content: "+";
+    position: absolute;
+    left: 0;
+    color: var(--energy-charge);
+    font-weight: bold;
+  }
+  .energy-card.drain li::before {
+    content: "-";
+    position: absolute;
+    left: 0;
+    color: var(--energy-drain);
+    font-weight: bold;
+  }
+  .energy-card p {
+    font-size: 13px;
+    color: var(--text-light);
+    line-height: 1.7;
+  }
+
+  /* 精神角落 */
+  .sanctuary {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .sanctuary-main {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.03);
+  }
+  .sanctuary-main h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--chapter);
+  }
+  .sanctuary-place {
+    font-size: 16px;
+    color: var(--accent-dark);
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+  .sanctuary-desc {
+    font-size: 13px;
+    color: var(--text-light);
+    line-height: 1.7;
+  }
+  .sanctuary-ritual {
+    background: linear-gradient(135deg, #FFF5F9, #FFF);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.03);
+  }
+  .sanctuary-ritual h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--accent);
+  }
+  .sanctuary-ritual p {
+    font-size: 13px;
+    color: var(--text-light);
+    line-height: 1.7;
+  }
+  .sanctuary-commute {
+    background: linear-gradient(135deg, #F0FAF7, #FFF);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.03);
+  }
+  .sanctuary-commute h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--mint);
+  }
+  .sanctuary-commute p {
+    font-size: 13px;
+    color: var(--text-light);
+    line-height: 1.7;
+  }
+
+  /* 技能卡 */
+  .skills {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .skill-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px 20px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.03);
+  }
+  .skill-icon {
+    font-size: 18px;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  .skill-card h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--chapter);
+  }
+  .skill-card p {
+    font-size: 12px;
+    color: var(--text-light);
+    line-height: 1.7;
+  }
+
+  /* 清醒时刻 */
+  .awakening {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+  .awakening-item {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.03);
+  }
+  .awakening-time {
+    font-size: 12px;
+    color: var(--accent);
+    font-weight: 500;
+    display: block;
+    margin-bottom: 8px;
+  }
+  .awakening-content {
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.7;
+  }
+  .letter-to-past {
+    background: linear-gradient(135deg, #FFF5F9, #FFF);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.03);
+  }
+  .letter-to-past h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 14px;
+    color: var(--chapter);
+  }
+  .letter-content {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 15px;
+    color: var(--text);
+    line-height: 1.8;
+    font-style: italic;
+  }
+
+  /* 丰容清单 */
+  .enrichment-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .enrichment-item {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.03);
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .enrichment-tag {
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 10px;
+    flex-shrink: 0;
+    font-weight: 500;
+    margin-top: 2px;
+    white-space: nowrap;
+  }
+  .tag-weekly {
+    background: var(--accent-light);
+    color: var(--accent-dark);
+  }
+  .tag-commute {
+    background: var(--mint-light);
+    color: var(--mint);
+  }
+  .tag-upgrade {
+    background: #FFF3E0;
+    color: #E6A23C;
+  }
+  .tag-toast {
+    background: #FDE8E8;
+    color: #D46A6A;
+  }
+  .enrichment-content {
+    font-size: 13px;
+    color: var(--text-light);
+    line-height: 1.7;
+  }
+  .enrichment-content strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  /* 建议 */
+  .tips { display: flex; flex-direction: column; gap: 14px; }
+  .tip-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.03);
+  }
+  .tip-card h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--chapter);
+  }
+  .tip-card p {
+    font-size: 13px;
+    color: var(--text-light);
+    line-height: 1.7;
+  }
+
+  /* 注意事项 */
+  .warnings { display: flex; flex-direction: column; gap: 16px; }
+  .warning-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .warning-icon {
+    font-size: 14px;
+    color: var(--accent);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .warning-item p {
+    font-size: 13px;
+    color: var(--text-light);
+    line-height: 1.7;
+  }
+
+  /* 保修 */
+  .warranty-item {
+    font-size: 13px;
+    color: var(--text-light);
+    line-height: 1.7;
+    margin-bottom: 14px;
+  }
+  .warranty-item strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  /* 活人感自我介绍 */
+  .alive-section {
+    padding: 50px 0;
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(180deg, var(--bg), #FFF5F9, var(--bg));
+    margin: 0 -40px;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  .alive-section h2 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--chapter);
+    margin-bottom: 8px;
+    text-align: center;
+  }
+  .alive-intro {
+    font-size: 12px;
+    color: var(--text-light);
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  .alive-content {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    font-size: 14px;
+    color: var(--text);
+    line-height: 2;
+    text-align: center;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.03);
+  }
+
+  /* 尾页 */
+  .ending {
+    text-align: center;
+    padding: 80px 0 50px;
+  }
+  .ending-decoration {
+    font-size: 18px;
+    color: var(--accent);
+    letter-spacing: 14px;
+    margin-bottom: 40px;
+    opacity: 0.7;
+  }
+  .ending-text {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 16px;
+    line-height: 2;
+    color: var(--chapter);
+    margin-bottom: 40px;
+  }
+  .ending-line {
+    width: 36px;
+    height: 1px;
+    background: var(--accent);
+    margin: 0 auto 28px;
+  }
+  .ending-note {
+    font-size: 11px;
+    color: var(--text-light);
+    line-height: 2;
+    letter-spacing: 1px;
+  }
+
+  @media (max-width: 600px) {
+    .page { padding: 36px 20px; }
+    .cover h1 { font-size: 30px; letter-spacing: 6px; }
+    .skills { grid-template-columns: 1fr; }
+    .alive-section { margin: 0 -20px; padding-left: 20px; padding-right: 20px; }
+    .profile-item .value { max-width: 200px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- 封面 -->
+  <div class="cover">
+    <div class="cover-decoration">&#10022; &#10022; &#10022;</div>
+    <h1>人生说明书</h1>
+    <p class="subtitle">LIFE MANUAL</p>
+    <div class="divider"></div>
+    <p class="owner">为 <span class="name">小鱼</span> 生成</p>
+    <p class="date">生成日期：2026年5月19日</p>
+    <p class="edition">全球限量一册 &middot; 不可复制</p>
+    <p class="tagline">"敬自己一杯型" &mdash; 在认清生活真相后，依然决定认真度过每一个普通日子</p>
+  </div>
+
+  <!-- 目录 -->
+  <div class="toc">
+    <h2>目 录</h2>
+    <ol>
+      <li>关于这个人</li>
+      <li>内在光谱</li>
+      <li>能量说明书</li>
+      <li>精神角落</li>
+      <li>隐藏技能</li>
+      <li>清醒时刻</li>
+      <li>人生丰容清单 <span class="new-tag">v3.0 新增</span></li>
+      <li>使用建议</li>
+      <li>注意事项</li>
+      <li>保修条款</li>
+    </ol>
+  </div>
+
+  <!-- 第一章：关于这个人 -->
+  <div class="chapter">
+    <h2><span class="chapter-num">01</span> 关于这个人</h2>
+
+    <div class="profile-card">
+      <div class="profile-item">
+        <span class="label">气质类型</span>
+        <span class="value">反精致型</span>
+      </div>
+      <div class="profile-item">
+        <span class="label">核心驱动力</span>
+        <span class="value">在认清生活真相后，依然决定认真度过每一个普通日子</span>
+      </div>
+      <div class="profile-item">
+        <span class="label">隐藏的矛盾</span>
+        <span class="value">嘴上说着"如何呢又能怎"，其实心里有一团没熄灭的火</span>
+      </div>
+      <div class="profile-item">
+        <span class="label">气血强度</span>
+        <span class="value">适中偏旺 &mdash; 看起来懒洋洋的，关键时刻比谁都扛得住</span>
+      </div>
+    </div>
+
+    <div class="description">
+      <p>她会在下班后去菜市场买菜，不是因为会做饭，是因为觉得菜市场比商场真实。那些带着泥土的萝卜、还沾着水珠的青菜、大声吆喝的摊主，比商场里整齐排列的商品更有"活着"的感觉。她可能买完菜回家只煮了一碗面，但那碗面里放了两个蛋，因为她觉得"今天值得两个蛋"。</p>
+      <p>她朋友圈三天可见，不是因为藏了什么，是觉得"记录好了就够了，不需要展示"。她不会在社交媒体上精心经营一个人设，偶尔发一条，大概率是拍糊了的猫、对焦失败的晚霞，或者一句没头没尾的话。但如果你翻到她几年前发的那些，会发现每一条都是真的开心。</p>
+      <p>她不是不在乎，是太在乎了所以学会了"选择性在乎"。她把有限的精力留给真正重要的事：几个真正在意的人、一些真正有温度的瞬间、和那些别人觉得"有什么好开心的"但她自己乐在其中的小事。她活得有点慢，但每一步都踩在地上。</p>
+    </div>
+  </div>
+
+  <!-- 第二章：内在光谱 -->
+  <div class="chapter">
+    <h2><span class="chapter-num">02</span> 内在光谱</h2>
+    <p class="chapter-intro">每个人都不是单维度的。以下是这个人的内在光谱分析。</p>
+
+    <div class="spectrum">
+      <div class="spectrum-item">
+        <div class="spectrum-label">
+          <span>理性 &larr;</span>
+          <span>&rarr; 感性</span>
+        </div>
+        <div class="spectrum-bar">
+          <div class="spectrum-fill" style="width: 62%"></div>
+          <div class="spectrum-dot" style="left: 62%"></div>
+        </div>
+        <p class="spectrum-note">偏感性。做决定时更相信直觉和感受，但不是盲目冲动——她的直觉是长期观察后沉淀下来的判断力。</p>
+      </div>
+
+      <div class="spectrum-item">
+        <div class="spectrum-label">
+          <span>独处 &larr;</span>
+          <span>&rarr; 社交</span>
+        </div>
+        <div class="spectrum-bar">
+          <div class="spectrum-fill" style="width: 40%"></div>
+          <div class="spectrum-dot" style="left: 40%"></div>
+        </div>
+        <p class="spectrum-note">偏独处。她不讨厌社交，但更享受一个人待着的状态。独处对她来说不是孤独，是充电。</p>
+      </div>
+
+      <div class="spectrum-item">
+        <div class="spectrum-label">
+          <span>计划 &larr;</span>
+          <span>&rarr; 随性</span>
+        </div>
+        <div class="spectrum-bar">
+          <div class="spectrum-fill" style="width: 55%"></div>
+          <div class="spectrum-dot" style="left: 55%"></div>
+        </div>
+        <p class="spectrum-note">偏随性。她有大概的方向，但不喜欢把每一天都安排得严丝合缝。留一点空白，给意外和灵感。</p>
+      </div>
+
+      <div class="spectrum-item">
+        <div class="spectrum-label">
+          <span>理想主义 &larr;</span>
+          <span>&rarr; 现实主义</span>
+        </div>
+        <div class="spectrum-bar">
+          <div class="spectrum-fill" style="width: 50%"></div>
+          <div class="spectrum-dot" style="left: 50%"></div>
+        </div>
+        <p class="spectrum-note">正中间。她心里有理想，但脚踩在现实里。她不会为了理想不顾一切，也不会因为现实放弃所有期待。这种平衡，是她最珍贵的品质。</p>
+      </div>
+
+      <div class="spectrum-item">
+        <div class="spectrum-label">
+          <span>敏感 &larr;</span>
+          <span>&rarr; 钝感</span>
+        </div>
+        <div class="spectrum-bar">
+          <div class="spectrum-fill" style="width: 70%"></div>
+          <div class="spectrum-dot" style="left: 70%"></div>
+        </div>
+        <p class="spectrum-note">偏敏感。她能捕捉到别人忽略的细节——朋友语气里微妙的变化、空气里季节更替的味道、一首歌里某个和弦带来的情绪。这份敏感有时候让她累，但更多时候，让她活得比别人更丰富。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 第三章：能量说明书 -->
+  <div class="chapter">
+    <h2><span class="chapter-num">03</span> 能量说明书</h2>
+    <p class="chapter-intro">每个人的能量都有来处和去处。</p>
+
+    <div class="energy-section">
+      <div class="energy-card charge">
+        <h3>&#9889; 能量来源</h3>
+        <ul>
+          <li>逛菜市场，感受人间烟火气</li>
+          <li>和猫待在一起，听它打呼噜</li>
+          <li>下雨天窝在沙发上，什么都不做</li>
+          <li>做完一件小事后的满足感——比如把厨房收拾干净</li>
+        </ul>
+      </div>
+      <div class="energy-card drain">
+        <h3>&#128267; 能量消耗</h3>
+        <ul>
+          <li>需要"表演"的社交——那种要一直笑、一直接话的场合</li>
+          <li>被催促——"快点""你怎么还没弄好"</li>
+          <li>看到预制朋友圈——精心编排的"完美生活"</li>
+          <li>周一早上</li>
+        </ul>
+      </div>
+      <div class="energy-card save">
+        <h3>&#128161; 一级省电模式</h3>
+        <p>戴上耳机，放一首循环了无数遍的歌，在沙发上蜷成一团，刷一些"没用但治愈"的东西。不回消息，不接电话。恢复好了会自己冒出来。不需要别人来"关心"她怎么了——那种关心反而是一种消耗。她需要的是安静，和时间。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 第四章：精神角落 -->
+  <div class="chapter">
+    <h2><span class="chapter-num">04</span> 精神角落</h2>
+    <p class="chapter-intro">每个人都需要一个地方，在那里可以卸下所有防备。</p>
+
+    <div class="sanctuary">
+      <div class="sanctuary-main">
+        <h3>&#127968; TA的精神角落</h3>
+        <p class="sanctuary-place">厨房 + 阳台</p>
+        <p class="sanctuary-desc">做一顿不需要完美的饭，然后在阳台上吹风。不需要米其林水准，哪怕只是煮个泡面加个蛋，重点是那个过程——洗菜、切菜、听锅里咕嘟咕嘟的声音。然后端到阳台上，坐在那里，吹着风，一口一口吃完。那一刻，世界是安静的，她是完整的。</p>
+      </div>
+      <div class="sanctuary-ritual">
+        <h3>&#10024; 进入仪式</h3>
+        <p>换上最舒服的睡衣 &rarr; 放一首老歌 &rarr; 开始切菜（切菜的声音很治愈）。不需要按菜谱来，冰箱里有什么就做什么。做坏了也不在乎，反正只有自己吃。</p>
+      </div>
+      <div class="sanctuary-commute">
+        <h3>&#127796; 通勤式疗愈</h3>
+        <p>下班后绕路经过公园，在长椅上坐15分钟，什么都不做。看树叶被风吹动，看遛狗的人经过，看天色慢慢变暗。偶尔会带一袋面包去喂鸭子。鸭子们争食的样子很好笑，笑完之后觉得今天没那么累了。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 第五章：隐藏技能 -->
+  <div class="chapter">
+    <h2><span class="chapter-num">05</span> 隐藏技能</h2>
+    <p class="chapter-intro">这个人可能自己都没意识到的能力。</p>
+
+    <div class="skills">
+      <div class="skill-card">
+        <div class="skill-icon">&#9672;</div>
+        <h3>人类丰容术</h3>
+        <p>擅长给无聊日常制造小变化。上周给工位加了一盆绿萝，这周换了回家的路线。生活不需要大改变，一点点不同就够了。</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">&#9672;</div>
+        <h3>有效努力术</h3>
+        <p>不做表演性自律。别人打卡5点起床，她8点起但效率拉满。她知道"看起来努力"和"真的在努力"的区别。</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">&#9672;</div>
+        <h3>温柔的抗争</h3>
+        <p>不吵架，但有自己的底线。用"好的"代替"不行"，然后用行动证明。表面上什么都没说，其实什么都没让步。</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">&#9672;</div>
+        <h3>活人感制造机</h3>
+        <p>在任何场合都能保持真实。拍照不P图，朋友圈发没对焦的笑场照片。她让人觉得"原来可以不装"。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 第六章：清醒时刻 -->
+  <div class="chapter">
+    <h2><span class="chapter-num">06</span> 清醒时刻</h2>
+    <p class="chapter-intro">那些突然想通的瞬间，是人生最珍贵的节点。</p>
+
+    <div class="awakening">
+      <div class="awakening-item">
+        <span class="awakening-time">去年秋天</span>
+        <p class="awakening-content">想通了"不是所有关系都需要维护，有些关系让它自然淡去就好"。不是谁做错了什么，就是走着走着方向不一样了。不用强求，不用遗憾，感谢同行过就好。</p>
+      </div>
+      <div class="awakening-item">
+        <span class="awakening-time">更早以前</span>
+        <p class="awakening-content">想通了"努力不一定要让别人看到，自己知道就好"。不需要在朋友圈打卡，不需要向谁证明"我很努力"。真正的努力是安静的，像植物生长一样，别人看不见，但自己知道根扎得越来越深。</p>
+      </div>
+    </div>
+
+    <div class="letter-to-past">
+      <h3>&#9993; 给十年前的自己</h3>
+      <p class="letter-content">"你不需要变成一个厉害的人。你现在这样，就挺好的。"</p>
+    </div>
+  </div>
+
+  <!-- 第七章：人生丰容清单（v3.0新增） -->
+  <div class="chapter">
+    <h2><span class="chapter-num">07</span> 人生丰容清单 <span style="font-size:11px; color:var(--accent); font-weight:400; letter-spacing:1px;">v3.0 新增</span></h2>
+    <p class="chapter-intro">像动物园给动物做"丰容"一样，给自己的日常也加点新鲜感。不需要大动作，一点点改变就是善待自己。</p>
+
+    <div class="enrichment-list">
+      <div class="enrichment-item">
+        <span class="enrichment-tag tag-weekly">本周推荐</span>
+        <div class="enrichment-content"><strong>给厨房窗台买一束花</strong>，不用贵的，菜市场10块钱的就行。每次做饭的时候余光看到那束花，会觉得日子有点甜。</div>
+      </div>
+      <div class="enrichment-item">
+        <span class="enrichment-tag tag-commute">通勤式疗愈</span>
+        <div class="enrichment-content"><strong>找一条没走过的路回家</strong>，用"Color Walk"的方式——选一个颜色，看路上有多少个这个颜色的东西。比如今天选黄色，你会发现自己平时错过了好多黄色：出租车、路牌、某个店门口的花、一只黄色的猫。</div>
+      </div>
+      <div class="enrichment-item">
+        <span class="enrichment-tag tag-upgrade">精神角落升级</span>
+        <div class="enrichment-content"><strong>在阳台放一个小毯子</strong>，这样吹风的时候可以坐着而不是站着。一个小小的改变，但阳台就从"站一会儿就走"变成了"可以待很久的地方"。</div>
+      </div>
+      <div class="enrichment-item">
+        <span class="enrichment-tag tag-toast">敬自己一杯</span>
+        <div class="enrichment-content"><strong>今天下班后，给自己倒一杯喜欢的饮料</strong>（不一定是酒），然后什么都不想地喝完它。这一杯，敬今天也好好活过来的自己。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 第八章：使用建议 -->
+  <div class="chapter">
+    <h2><span class="chapter-num">08</span> 使用建议</h2>
+    <p class="chapter-intro">关于如何与这个人相处的建议。</p>
+
+    <div class="tips">
+      <div class="tip-card">
+        <h3>&#10022; 不要催她</h3>
+        <p>她有自己的节奏。催她只会让她更慢。给她足够的空间和时间，她会用让你惊喜的方式完成事情。</p>
+      </div>
+      <div class="tip-card">
+        <h3>&#10022; 接受她的"消失"</h3>
+        <p>她偶尔会不回消息、不出现。这不是冷暴力，是她在充电。等她能量恢复了，会主动来找你。给她这个空间，你们的感情反而会更深。</p>
+      </div>
+      <div class="tip-card">
+        <h3>&#10022; 和她一起做"没用的事"</h3>
+        <p>她最喜欢的关系，不是一起做大事，是一起做"没用但开心的事"。比如一起逛菜市场、一起坐在公园长椅上看鸭子、一起在雨天窝着什么都不干。</p>
+      </div>
+      <div class="tip-card">
+        <h3>&#10022; 真实就好</h3>
+        <p>她最讨厌"表演"。你不用在她面前装开心、装坚强、装正能量。你可以直接说"我今天不太好"，她会说"那我们去买束花吧"。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 第九章：注意事项 -->
+  <div class="chapter">
+    <h2><span class="chapter-num">09</span> 注意事项</h2>
+
+    <div class="warnings">
+      <div class="warning-item">
+        <span class="warning-icon">&#9888;</span>
+        <p>她看起来"如何呢又能怎"，但其实很在意。如果她在意的事被轻视了，她不会吵架，但会默默在心里记一笔。记多了，就会慢慢疏远。</p>
+      </div>
+      <div class="warning-item">
+        <span class="warning-icon">&#9888;</span>
+        <p>不要试图"改造"她。她不需要变得更精致、更上进、更社交。她就是她，一个"反精致"的人。你觉得她应该改变的地方，恰恰是她最珍贵的地方。</p>
+      </div>
+      <div class="warning-item">
+        <span class="warning-icon">&#9888;</span>
+        <p>她说"好的"的时候，不一定是同意。可能是"我不想争了"，也可能是"我会用自己的方式处理"。注意看她的行动，而不是她的话。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 第十章：保修条款 -->
+  <div class="chapter">
+    <h2><span class="chapter-num">10</span> 保修条款</h2>
+
+    <div class="warranty">
+      <p class="warranty-item">
+        <strong>保修期：</strong>终身。从出生到离开，这个人的灵魂保修期不设上限。就算有时候觉得自己"坏了"，也只是需要重启，不需要更换零件。
+      </p>
+      <p class="warranty-item">
+        <strong>适用范围：</strong>适用于所有人生阶段，包括但不限于迷茫期、躺平期、菜市场治愈期、喂鸭子疗愈期、突然想通期。
+      </p>
+      <p class="warranty-item">
+        <strong>免责声明：</strong>本说明书无法预测未来，但可以确认——这个人值得被认真对待。她可能不会说漂亮的话，但她会做温暖的事。
+      </p>
+      <p class="warranty-item">
+        <strong>特别说明：</strong>如有任何问题，请直接联系当事人本人。建议从"今天菜市场有什么新鲜的"开始，而不是"你怎么又不回消息了"。
+      </p>
+    </div>
+  </div>
+
+  <!-- 活人感自我介绍（v3.0升级版） -->
+  <div class="alive-section">
+    <h2>&#127800; 活人感自我介绍 <span style="font-size:11px; color:var(--mint); font-weight:400; letter-spacing:1px;">v3.0 升级版</span></h2>
+    <p class="alive-intro">不是标签，不是人设，就是一个有毛边但鲜活的自己。</p>
+    <div class="alive-content">
+      一个会在下班后去菜市场买菜的人，不是因为会做饭，是因为觉得菜市场比商场真实。<br>
+      班味很重，但在努力去班味——方式是喂鸭子。<br>
+      此人的气血强度恐怕在大多数人之上，虽然她看起来懒洋洋的。<br>
+      朋友圈三天可见，偶尔发一条，大概率是拍糊了的猫或者没对焦的晚霞。<br>
+      嘴上说着"如何呢又能怎"，其实心里有一团没熄灭的火。<br>
+      精通人类丰容术——上周给工位加了绿萝，这周换了回家的路线，下周打算试试新的泡面口味。<br>
+      她的通勤式疗愈是在公园长椅上坐15分钟，什么都不做，偶尔喂喂鸭子。<br>
+      不做表演性自律，8点起床但效率拉满，因为她知道"看起来努力"和"真的在努力"的区别。<br>
+      拍照不P图，发朋友圈不排版，活得有点毛边，但每一处毛边都是真的。<br>
+      如果你问她"你最近怎么样"，她大概会说"还行吧"，<br>
+      但如果你说"今天菜市场有新鲜的栀子花"，她可能会突然眼睛亮起来。
+    </div>
+  </div>
+
+  <!-- 尾页 -->
+  <div class="ending">
+    <div class="ending-decoration">&#10022;</div>
+    <p class="ending-text">
+      "敬自己一杯。<br>
+      不是因为做了什么了不起的事，<br>
+      是因为今天也好好活过来了。"
+    </p>
+    <div class="ending-line"></div>
+    <p class="ending-note">
+      由 LifeManual v3.0 生成 &middot; 2026年5月19日<br>
+      全球限量一册 &middot; 仅此一份
+    </p>
+  </div>
+
+</div>
+</body>
+</html>
