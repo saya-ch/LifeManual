@@ -1,0 +1,26 @@
+{
+  "name": "LifeManual",
+  "version": "1.0.0",
+  "displayName": "📖 LifeManual — 人生说明书生成器",
+  "description": "通过3-5个温暖的问题，为你生成一本专属于你的「人生说明书」——不是星座运势，不是MBTI标签，而是一份基于真实自我认知的、有温度的个人档案。生成精美的HTML页面，可直接截图分享。",
+  "author": {
+    "name": "saya-ch",
+    "github": "https://github.com/saya-ch"
+  },
+  "tags": [
+    "情绪价值",
+    "自我探索",
+    "创意生成",
+    "人生说明书",
+    "心理",
+    "社交"
+  ],
+  "categories": [
+    "创意工具",
+    "内容创作",
+    "自我探索"
+  ],
+  "license": "MIT",
+  "repository": "https://github.com/saya-ch/LifeManual",
+  "created": "2026-05-18"
+}
